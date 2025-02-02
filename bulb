@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+void print_bulb(int);
+void print_binary(char);
+int main()
+{
+    char a[20];
+
+    
+    printf("Mesaj: ");
+    scanf("%[^\n]", a); 
+
+    
+    for (int i = 0; a[i] != '\0'; i++)
+    {
+        print_binary(a[i]);
+    }
+
+    return 0;
+}
+
+
+
+    void print_bulb(int bit)
+    {
+       if (bit == 0)
+       {
+           printf("\U000026AB");
+       }
+       else if (bit == 1)
+       {
+           printf("\U0001F7E1");
+       }
+    }
+void print_binary(char c)
+{
+    for (int i = 7; i >= 0; i--) 
+    {
+        int bit = (c >> i) & 1; 
+        print_bulb(bit); 
+    }
+    printf("\n");
+}
