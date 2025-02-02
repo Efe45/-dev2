@@ -1,0 +1,44 @@
+
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+    int PUANLAR[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+
+    int skor_hesapla(char kelime[]);
+
+    int main(void)
+    {
+        char kelime1[10], kelime2[10];
+
+
+        printf("1. Oyuncu: ");
+        scanf("%s", kelime1);
+    printf("2. Oyuncu: ");
+    scanf("%s", kelime2); 
+
+
+        int puan1 = skor_hesapla(kelime1);
+        int puan2 = skor_hesapla(kelime2);
+
+        if(puan2 > puan1)
+            printf("2.oyuncu kazandı");
+        else if(puan1 > puan2)
+            printf("1.oyuncu kazandı");
+        else if (puan1 == puan2)
+                printf("BERABERE");
+    }
+
+int skor_hesapla(char kelime[])
+{
+    int toplam_puan = 0;
+    for (int a = 0; a < strlen(kelime); a++)
+    {
+        char harf = toupper(kelime[a]);
+        if (harf >= 'A' && harf <= 'Z')
+        {
+            toplam_puan += PUANLAR[harf - 'A']; 
+        }
+    }
+    return toplam_puan;
+}
